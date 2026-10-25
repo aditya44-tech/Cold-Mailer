@@ -1,0 +1,12 @@
+$kind: http-request
+name: image_extraction
+url: 'http://localhost:5000/api/file/extract/'
+method: POST
+order: 4000
+body:
+  type: formdata
+  content:
+    - key: file
+      type: file
+      src: 'postman-cloud:///1f1d05bd-f35e-4a90-b145-395e9d5c72cb'
+      description: ''

@@ -1,59 +1,58 @@
-import cloudinary from "../config/cloud.config.js";
+import cloudinary from "../config/cloud.config.js"
+import File from "../model/file.model.js"
+import User from "../model/auth.model.js"
 
 export const uploadFile = async (req, res) => {
-  try {
-    if (!req.file) {
+    try {
+        if (!req.file) {
             return res.status(400).json({
-                success: false,
-                message: "No file uploaded",
-            });
-    }
+                success: false, message: " File is required"
 
-        const { filename } = req.body;
-    if (!filename) {
+            })
+        } const { fileName } = req.body
+        if (!fileName) {
             return res.status(400).json({
-                success: false,
-                message: "Filename is required",
-            });
-    }
+                success: false, message: " File name is required"
 
-    const result = await new Promise((resolve, reject) => {
-            const stream = cloudinary.uploader.upload_stream(
-                {
-                    folder: "files",
-                    resource_type: "auto",
-                },
+            })
+        } const result = await new Promise((resolve, reject) => {
+            const stream = cloudinary.uploader.upload_stream({
+                folder: "files",
+                resource_type: "auto"
+            },
                 (error, result) => {
                     if (error) {
-                        return reject(error);
+                        return reject(error)
+                    } else {
+                        return resolve(result)
                     }
-                    return resolve(result);
                 }
-            );
-
-            stream.end(req.file.buffer);
-        });
-
+            )
+            stream.end(req.file.buffer)
+        })
         const file = await File.create({
-            filename,
-            fileurl: result.secure_url,
-            createdAt: req.user._id,
-        });
+            fileName,
+            fileURL: result.secure_url,
+            createdBy: req.user._id
+        })
+        await User.findByIdAndUpdate(req.user._id, {
 
-        await user.finalldByIdAndUpdate(req.user._id, {
-            $push: { files: file._id },
-        });
+            $push: {
+                files: file._id
+            }
 
-        return res.status(200).json({
+        })
+        return res.status(201).json({
             success: true,
-            message: "File uploaded successfully",
-            file,
-        });
+            msg: "file upload sucessfully",
+            file
+
+        })
     } catch (error) {
-    console.error("file upload error:", error, message );
+        console.log("file upload error:", error)
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
-    });
-  }
-};
+            message: "Internal server error"
+        })
+    }
+}

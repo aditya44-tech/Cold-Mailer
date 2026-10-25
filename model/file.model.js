@@ -1,13 +1,15 @@
+import mongoose from "mongoose";
+
 const fileschema = new mongoose.Schema({
-    filename: {
+    fileName: {
         type: String,
         required: true
     },
-    fileurl: {
+    fileURL: {
         type: String,
         required: true
     },
-    createdAt: {
+    createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'

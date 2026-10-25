@@ -1,0 +1,22 @@
+$kind: http-request
+url: http://localhost:5000/api/file/upload
+method: POST
+body:
+  type: formdata
+  content:
+    - type: file
+      key: file
+      src:
+        - postman-cloud:///1f1d03ca-3974-4110-a25f-05c5105bb2db
+      description: ""
+      disabled: false
+    - type: text
+      key: fileName
+      value: resume
+      description: ""
+      disabled: false
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_058h}}"
+order: 3000

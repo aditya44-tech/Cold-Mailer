@@ -9,7 +9,7 @@ const FREE_VISION_MODELS = [
     "thinkingmachines/inkling:free",
 ];
 
-export const extractContentWithAI = async (prompt, imageData = null) => {
+export const extractWithNvidia = async (prompt, imageData = null) => {
     const apiKey = process.env.OPENROUTER_API_KEY?.trim();
 
     if (!apiKey) {

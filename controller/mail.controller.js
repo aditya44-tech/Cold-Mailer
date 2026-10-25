@@ -1,6 +1,6 @@
 import Mail from "../model/mail.model.js";
 import Extraction from "../model/extraction.model.js";
-import User from "../model/user.model.js";
+import User from "../model/auth.model.js";
 import File from "../model/file.model.js";
 import { generateColdEmails } from "../services/mail.service.js";
 import { sendEmail } from "../services/email.service.js";
@@ -59,7 +59,7 @@ extraction.data?.email || "",
  }).sort({ createdAt: -1 });
  res.status(200).json({
  success: true,
- 
+ emails,
  });
  } catch (error) {
  res.status(500).json({

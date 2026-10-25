@@ -1,5 +1,0 @@
-$kind: collection
-variables:
-  - key: json_web_token_058h
-    secret: true
-    disabled: false

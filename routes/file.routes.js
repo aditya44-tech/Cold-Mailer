@@ -4,6 +4,7 @@ import { uploadFile } from "../controller/file.controller.js";
 import { extractContent } from "../controller/extraction.controller.js";
 import { authMiddleware } from "../middleware/auth.middleware.js";
 
+
 const router = express.Router();
 router.post("/upload", authMiddleware, upload.single("file"), uploadFile);
 router.post("/extract", authMiddleware, upload.single("file"), extractContent);

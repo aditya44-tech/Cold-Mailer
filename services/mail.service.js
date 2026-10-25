@@ -1,4 +1,4 @@
-import { extractWithNvidia } from "../utils/ai.utils.js";
+import { extractWithNvidia } from "../util/ai.util.js";
 export const generateColdEmails = async (
  companyDetails,
  studentProfile = {}

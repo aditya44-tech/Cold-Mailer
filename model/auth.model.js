@@ -28,6 +28,10 @@ const userSchema = mongoose.Schema({
     files: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'File' 
+    }],
+    mails: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Mail' 
     }]
 }, { timestamps: true });
 

@@ -3,7 +3,7 @@ import axios from "axios";
 const OPENROUTER_API_URL =
     "https://openrouter.ai/api/v1/chat/completions";
 
-export const extractWithNvidia = async (prompt, imageData = null) => {
+export const extractContentWithAI = async (prompt, imageData = null) => {
     const apiKey = process.env.OPENROUTER_API_KEY?.trim();
 
     if (!apiKey) {

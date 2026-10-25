@@ -1,6 +1,0 @@
-workspace:
-  id: bbce7f7e-167b-4c10-80cf-637ba57169a7
-cloudResources:
-  collections:
-    ../postman/collections/Resume_upload: 59147583-235c4f4d-9e82-470a-a687-33c1796e6e24
-    ../postman/collections/New Collection: 59147583-be8dfc46-04e0-4473-9ca2-ccf85bccd3b1
